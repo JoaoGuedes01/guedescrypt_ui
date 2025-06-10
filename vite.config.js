@@ -5,7 +5,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 export default defineConfig({
   plugins: [
     react(),
-    base: '/guedescrypt_ui/'
+    base: '/guedescrypt_ui/',
     nodePolyfills({
       // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
       // include: ['crypto', 'stream'], 
