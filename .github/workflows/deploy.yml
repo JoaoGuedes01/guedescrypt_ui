@@ -1,0 +1,32 @@
+# .github/workflows/deploy.yml
+
+name: Deploy React Vite App to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main 
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest 
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3 # Checkout repo 
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3 # Setup Node.js
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps 
+
+      - name: Build Vite Project
+        run: npm run build 
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3 # Action specifically designed for deploying to GitHub Pages
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist 
