@@ -5,7 +5,6 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills';
 export default defineConfig({
   plugins: [
     react(),
-    base: '/guedescrypt_ui/',
     nodePolyfills({
       // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
       // include: ['crypto', 'stream'], 
@@ -21,6 +20,7 @@ export default defineConfig({
       protocolImports: true,
     }),
   ],
+  base: '/guedescrypt_ui/',
   // If you are experiencing issues with the `Buffer` global, you might need to
   // explicitly define it in `optimizeDeps.esbuildOptions.define` as well.
   optimizeDeps: {
