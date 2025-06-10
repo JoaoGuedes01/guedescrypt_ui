@@ -10,6 +10,12 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest 
 
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3 # Checkout repo 
@@ -26,7 +32,7 @@ jobs:
         run: npm run build 
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3 # Action specifically designed for deploying to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist 
